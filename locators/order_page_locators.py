@@ -20,3 +20,5 @@ class OrderPageLocators:
     count_orders = (By.XPATH, ".//p[@class = 'OrderFeed_number__2MbrQ text text_type_digits-large']")
     count_order_today = (By.XPATH, "//p[contains(@class, 'OrderFeed_number__')]")
     number_at_work = (By.XPATH, ".//li[@class = 'text text_type_digits-default mb-2']")
+    number_of_order = (By.XPATH, "//h2[contains(@class, 'Modal_modal__title_shadow')]")
+    image_loaded = (By.CLASS_NAME, "Modal_modal_opened__3ISw4 Modal_modal__P3_V5")
