@@ -36,6 +36,8 @@ class OrderPage(BasePage):
 
     @allure.step("Получаем номер заказа и закрываем окно")
     def get_number_order_and_close_window(self):
+        self.waiting_element_to_be_invisibility(OrderPageLocators.image_loaded)
+        self.waiting_text_to_be_invisibility(OrderPageLocators.NUMBER_OF_ORDER, '9999')
         number = self.get_text_from_element(OrderPageLocators.order_number)
         self.click_to_element(OrderPageLocators.button_close)
         return number
@@ -79,4 +81,4 @@ class OrderPage(BasePage):
     @allure.step("Проверяем наличие заказа в разделе В работе")
     def check_number_at_work(self, number):
         self.click_orders()
-        assert int(self.get_text_from_element(OrderPageLocators.number_at_work)) == int(number)
+        assert self.get_text_from_element(OrderPageLocators.number_at_work) == f"0{number}"

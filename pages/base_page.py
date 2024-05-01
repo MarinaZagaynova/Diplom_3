@@ -27,7 +27,7 @@ class BasePage:
         return redirected_url
 
     def wait(self, locator):
-        WebDriverWait(self.driver, 3).until(
+        WebDriverWait(self.driver, 10).until(
             expected_conditions.visibility_of_element_located(locator))
 
     def drag_and_drop(self, locator_one, locator_two):
@@ -38,3 +38,9 @@ class BasePage:
 
     def scroll_to_end_of_page(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def waiting_text_to_be_invisibility(self, locator, text):
+        WebDriverWait(self.driver, 20).until_not(expected_conditions.text_to_be_present_in_element(locator, text))
+
+    def waiting_element_to_be_invisibility(self, locator):
+        WebDriverWait(self.driver, 20).until(expected_conditions.invisibility_of_element(locator))
